@@ -3,8 +3,8 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
-PKG_VERSION:=git
 PKG_SOURCE_PROTO:=git
+PKG_VERSION:=git
 PKG_SOURCE_URL:=https://github.com/edgeforce/u-boot-mt7620a-mt7610e-evb.git
 PKG_SOURCE_VERSION:=master
 PKG_MIRROR_HASH:=skip
