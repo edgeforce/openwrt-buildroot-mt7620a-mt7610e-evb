@@ -28,6 +28,7 @@
 # ignore feeds #
 
 /feeds
+/package/feeds
 
 # keep bin folder clean (packages only) #
 
