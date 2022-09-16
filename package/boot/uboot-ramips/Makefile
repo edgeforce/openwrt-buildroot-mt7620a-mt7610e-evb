@@ -38,29 +38,9 @@ define U-Boot/mt7620_mt7530_rfb
   UBOOT_IMAGE:=u-boot-with-spl.bin
 endef
 
-define U-Boot/mt7621_rfb
-  NAME:=MT7621 Reference Board
-  UBOOT_CONFIG:=mt7621_rfb
-  BUILD_DEVICES:=mediatek_mt7621-eval-board
-  BUILD_TARGET:=ramips
-  BUILD_SUBTARGET:=mt7621
-  UBOOT_IMAGE:=u-boot-mt7621.bin
-endef
-
-define U-Boot/mt7621_nand_rfb
-  NAME:=MT7621 Reference Board (NAND)
-  UBOOT_CONFIG:=mt7621_nand_rfb
-  BUILD_DEVICES:=mediatek_mt7621-eval-board
-  BUILD_TARGET:=ramips
-  BUILD_SUBTARGET:=mt7621
-  UBOOT_IMAGE:=u-boot-mt7621.bin
-endef
-
 UBOOT_TARGETS := \
 	mt7620_mt7530_rfb \
-	mt7620_rfb \
-	mt7621_nand_rfb \
-	mt7621_rfb
+	mt7620_rfb
 
 define Build/fip-image
 	$(if $(FIP_COMPRESS),\
@@ -73,17 +53,6 @@ define Build/fip-image
 		$(PKG_BUILD_DIR)/u-boot.fip
 endef
 
-ifdef CONFIG_TARGET_ramips_mt7621
-define Build/Prepare
-	$(call Build/Prepare/Default)
-ifdef CONFIG_DEBUG
-	$(CP) $(DL_DIR)/mt7621_stage_sram.bin $(PKG_BUILD_DIR)/
-else
-	$(CP) $(DL_DIR)/mt7621_stage_sram_noprint.bin $(PKG_BUILD_DIR)/mt7621_stage_sram.bin
-endif
-endef
-endif
-
 define Build/Configure
 	$(call Build/Configure/U-Boot)
 	sed -i 's/CONFIG_TOOLS_LIBCRYPTO=y/# CONFIG_TOOLS_LIBCRYPTO is not set/' $(PKG_BUILD_DIR)/.config
@@ -91,9 +60,6 @@ endef
 
 define Build/Compile
 	$(call Build/Compile/U-Boot)
-ifeq ($(UBOOT_IMAGE),u-boot.fip)
-	$(call Build/fip-image)
-endif
 endef
 
 define Build/InstallDev
