@@ -1,3 +1,5 @@
+# keep it clean  #
+
 # ignore file extensions #
 
 *.log
@@ -87,3 +89,5 @@
 !/package/boot
 !/package/boot/uboot-ramips
 !/package/boot/uboot-ramips/*
+
+# end of file #
