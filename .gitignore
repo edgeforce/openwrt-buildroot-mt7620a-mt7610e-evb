@@ -50,8 +50,6 @@
 !/package/base-files/*
 !/package/devel
 !/package/devel/*
-!/package/feeds
-!/package/feeds/*
 !/package/libs
 !/package/libs/*
 #!/package/libs/libc
