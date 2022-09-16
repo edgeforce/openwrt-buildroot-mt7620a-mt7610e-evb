@@ -7,6 +7,7 @@
 
 .config.old
 
+/dl
 /tmp
 /logs
 /files
