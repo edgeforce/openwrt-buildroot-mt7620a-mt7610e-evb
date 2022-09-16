@@ -1,11 +1,16 @@
-# ignore all with file extension
+# ignore file extensions #
+
 *.log
 *.orig
 *.rej
 *.o
 *.so
 
+# ignore old configs #
+
 .config.old
+
+# ignore temporary files #
 
 /dl
 /tmp
@@ -13,20 +18,27 @@
 /files
 /overlay
 
+# ignore package compilation directories #
+
 /staging_dir
 /build_dir
 
+# ignore feeds #
+
+/feeds
+
+# keep bin folder clean (packages only) #
+
 /bin/*
+!/bin/packages
+!/bin/packages/*
+
+# keep package make scripts clean #
+
 /package/*
 /package/system/*
 /package/kernel/*
 /package/boot/*
-/feeds/*
-/feeds/telephony/*
-/feeds/telephony/libs/*
-
-!/bin/packages
-!/bin/packages/*
 !/package
 !/package/Makefile
 !/package/system
@@ -75,13 +87,3 @@
 !/package/boot
 !/package/boot/uboot-ramips
 !/package/boot/uboot-ramips/*
-!/feeds
-!/feeds/telephony
-!/feeds/telephony/libs
-!/feeds/telephony/libs/dahdi-linux
-!/feeds/telephony/libs/dahdi-linux/*
-!/feeds/telephony/libs/dahdi-tools
-!/feeds/telephony/libs/dahdi-tools/*
-!/feeds/telephony/libs/libpri
-!/feeds/telephony/libs/libpri/*
-
